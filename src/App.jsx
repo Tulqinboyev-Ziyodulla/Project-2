@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
-import CountryCard from './components/CountryCard/CountryCard';
 
 
 function App() {
@@ -98,9 +97,6 @@ function App() {
       isBasket: false
     }
   ]
-  const handleDelete = (countryName) => {
-    setCountries(countries.filter(country => country.name !== countryName));
-};
   const [countries, setCountries] = useState(allCountries)
   const [isLoading, setIsLoading] = useState(false)
   return (
@@ -109,15 +105,6 @@ function App() {
       <main>
         <Hero isLoading={isLoading} setIsLoading={setIsLoading} allCountries={allCountries} countries={countries} setCountries={setCountries} />
       </main>
-      <div className="App p-4">
-            {countries.map(country => (
-                <CountryCard
-                    key={country.name}
-                    country={country}
-                    onDelete={handleDelete}
-                />
-            ))}
-        </div>
     </>
   );
 }
